@@ -29,13 +29,18 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 const corsOptions = {
-  origin: function (origin, callback) {
+  // origin: function (origin, callback) {
 
-    const allowedOrigins = [
-      process.env.CLIENT_URL
-    ];
+  //   const allowedOrigins = [
+  //     process.env.CLIENT_URL
+  //   ];
+  //   if (allowedOrigins.indexOf(origin) !== -1) {
+  //     callback(null, true);
+  //   } else {
+  //     callback(new Error('Not allowed by CORS'));
+  //   }
 
-  },
+  // },
   credentials: true, // Allow cookies and authentication headers
   methods: ["GET", "POST", "DELETE", "PUT"],
   allowedHeaders: [
