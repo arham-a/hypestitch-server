@@ -26,19 +26,27 @@ mongoose
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+const corsOptions = {
+  origin: function (origin, callback) {
+
+    const allowedOrigins = [
+      process.env.CLIENT_URL
+    ];
+
+  },
+  credentials: true, // Allow cookies and authentication headers
+  methods: ["GET", "POST", "DELETE", "PUT"],
+  allowedHeaders: [
+    "Content-Type",
+    "Authorization",
+    "Cache-Control",
+    "Expires",
+    "Pragma",
+  ],
+};
+
 app.use(
-  cors({
-    origin: process.env.CLIENT_URL,
-    methods: ["GET", "POST", "DELETE", "PUT"],
-    allowedHeaders: [
-      "Content-Type",
-      "Authorization",
-      "Cache-Control",
-      "Expires",
-      "Pragma",
-    ],
-    credentials: true,
-  })
+  cors(corsOptions)
 );
 
 app.use(cookieParser());
